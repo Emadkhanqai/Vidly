@@ -212,9 +212,22 @@
     <Compile Include="Migrations\202007141923069_AddBirthDateColumnInCustomers.designer.cs">
       <DependentUpon>202007141923069_AddBirthDateColumnInCustomers.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202007141935189_AddGenreInMovies.cs" />
+    <Compile Include="Migrations\202007141935189_AddGenreInMovies.designer.cs">
+      <DependentUpon>202007141935189_AddGenreInMovies.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202007141938345_PopulateGenre.cs" />
+    <Compile Include="Migrations\202007141938345_PopulateGenre.designer.cs">
+      <DependentUpon>202007141938345_PopulateGenre.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202007141943408_ChangedTheTypeOfIDInGenre.cs" />
+    <Compile Include="Migrations\202007141943408_ChangedTheTypeOfIDInGenre.designer.cs">
+      <DependentUpon>202007141943408_ChangedTheTypeOfIDInGenre.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
+    <Compile Include="Models\Genre.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MembershipType.cs" />
@@ -388,6 +401,7 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Views\Movies\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -427,6 +441,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202007141923069_AddBirthDateColumnInCustomers.resx">
       <DependentUpon>202007141923069_AddBirthDateColumnInCustomers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007141935189_AddGenreInMovies.resx">
+      <DependentUpon>202007141935189_AddGenreInMovies.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007141938345_PopulateGenre.resx">
+      <DependentUpon>202007141938345_PopulateGenre.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007141943408_ChangedTheTypeOfIDInGenre.resx">
+      <DependentUpon>202007141943408_ChangedTheTypeOfIDInGenre.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

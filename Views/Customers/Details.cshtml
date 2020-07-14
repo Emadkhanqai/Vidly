@@ -10,6 +10,6 @@
     <li>Membership Type: @Model.MembershipType.Name</li>
     @if (Model.BirthDate.HasValue)
     {
-        <li>Birth Date: @DateTime.Parse(Model.BirthDate.ToString()).ToString("dd MMM yyyy") </li>
+        <li>Birth Date: @DateTime.Parse(Model.BirthDate.ToString()).ToString("D") </li>
     }
 </ul>
