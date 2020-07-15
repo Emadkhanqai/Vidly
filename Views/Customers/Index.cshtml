@@ -21,62 +21,64 @@
         @Html.ActionLink("CREATE", "New", "Customers", routeValues: null, htmlAttributes: new { @class = "btn btn-primary" })
     </span>
 </h2>
+<br />
+<br />
 @if (!Model.Any())
 {
     <p>We don't have any customers yet.</p>
 }
 else
 {
-    <div style="position:relative">
-        <div class="lds-spinner" style="display:none"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
 
-        <table class="table table-bordered table-hover" id="customers">
-            <thead>
+    <table class="table table-bordered table-hover" id="customers">
+        <thead>
+            <tr>
+                <th>Customer</th>
+                <th>Membership Type</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var customer in Model)
+            {
                 <tr>
-                    <th>Customer</th>
-                    <th>Membership Type</th>
-                    <th>Delete</th>
+                    <td>@Html.ActionLink(customer.Name, "Edit", "Customers", new { id = customer.Id }, null)</td>
+                    <td>@customer.MembershipType.Name</td>
+                    <td>
+                        <button data-customer-id="@customer.Id" class="js-delete btn btn-danger">DELETE</button>
+                    </td>
                 </tr>
-            </thead>
-            <tbody>
-                @foreach (var customer in Model)
-                {
-                    <tr>
-                        <td>@Html.ActionLink(customer.Name, "Edit", "Customers", new { id = customer.Id }, null)</td>
-                        <td>@customer.MembershipType.Name</td>
-                        <td>
-                            <button data-customer-id="@customer.Id" class="js-delete btn btn-danger">DELETE</button>
-                        </td>
-                    </tr>
-                }
-            </tbody>
-        </table>
-    </div>
+            }
+        </tbody>
+    </table>
 }
 
 @section scripts {
     <script>
         $(document).ready(function () {
-            $('#customers').on("click", ".js-delete", function () {
-                    var button = $(this);
-                    bootbox.confirm("Are you sure you want to Delete?",
-                        function (result) {
-                            if (result) {
-                                $.ajax(
-                                    {
-                                        url: "/api/customers/" + button.attr("data-customer-id"),
-                                        method: "DELETE",
-                                        success: function () {
-                                            button.parents("tr").remove();
-                                        },
-                                        error: function () {
-                                        }
-                                    }
-                                );
-                            }
-                        });
 
-                });
+            $('#customers').DataTable();
+
+            $('#customers').on("click", ".js-delete", function () {
+                var button = $(this);
+                bootbox.confirm("Are you sure you want to Delete?",
+                    function (result) {
+                        if (result) {
+                            $.ajax(
+                                {
+                                    url: "/api/customers/" + button.attr("data-customer-id"),
+                                    method: "DELETE",
+                                    success: function () {
+                                        button.parents("tr").remove();
+                                    },
+                                    error: function () {
+                                    }
+                                }
+                            );
+                        }
+                    });
+
+            });
         })
     </script>
 }
