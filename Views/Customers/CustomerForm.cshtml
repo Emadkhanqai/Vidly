@@ -4,8 +4,18 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>New Customer</h2>
-
+<h2>
+    @if (Model.Customer == null)
+    {
+        <text>New</text>
+    }
+    else
+    {
+        <text>Edit</text>
+    }
+    Customer
+</h2>
+<br />
 @using (@Html.BeginForm("Save", "Customers"))
 {
     <div class="form-group">
