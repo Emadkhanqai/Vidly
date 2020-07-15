@@ -232,6 +232,10 @@
     <Compile Include="Migrations\202007150646078_DateUpdatedColumnAddedInMovies.designer.cs">
       <DependentUpon>202007150646078_DateUpdatedColumnAddedInMovies.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202007150711543_MovieModelUpdated.cs" />
+    <Compile Include="Migrations\202007150711543_MovieModelUpdated.designer.cs">
+      <DependentUpon>202007150711543_MovieModelUpdated.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -468,6 +472,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202007150646078_DateUpdatedColumnAddedInMovies.resx">
       <DependentUpon>202007150646078_DateUpdatedColumnAddedInMovies.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007150711543_MovieModelUpdated.resx">
+      <DependentUpon>202007150711543_MovieModelUpdated.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
