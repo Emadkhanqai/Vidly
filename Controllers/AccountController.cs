@@ -159,10 +159,10 @@ namespace Vidly.Controllers
                     // Temp Code
                     // for Admin@vidly.com
                     // This will assign the user to CanManageMovies Role only -- used for 1 time only.
-                    var roleStore = new RoleStore<IdentityRole>(new ApplicationDbContext());
-                    var roleManager = new RoleManager<IdentityRole>(roleStore);
-                    await roleManager.CreateAsync(new IdentityRole("CanManageMovies"));
-                    await UserManager.AddToRoleAsync(user.Id, "CanManageMovies");
+                    // var roleStore = new RoleStore<IdentityRole>(new ApplicationDbContext());
+                    // var roleManager = new RoleManager<IdentityRole>(roleStore);
+                    // await roleManager.CreateAsync(new IdentityRole("CanManageMovies"));
+                    // await UserManager.AddToRoleAsync(user.Id, "CanManageMovies");
 
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     
