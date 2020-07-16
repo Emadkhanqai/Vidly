@@ -152,13 +152,17 @@ namespace Vidly.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser
+                {
+                    UserName = model.Email, 
+                    Email = model.Email, 
+                    DrivingLicense = model.DrivingLicense
+                };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    // Temp Code
-                    // for Admin@vidly.com
-                    // This will assign the user to CanManageMovies Role only -- used for 1 time only.
+                    // Temporary Code for Admin@vidly.com
+                    // This will assign the user to CanManageMovies Role only -- used for 1 time only. Useful when migrating this application to other environment
                     // var roleStore = new RoleStore<IdentityRole>(new ApplicationDbContext());
                     // var roleManager = new RoleManager<IdentityRole>(roleStore);
                     // await roleManager.CreateAsync(new IdentityRole("CanManageMovies"));
