@@ -10,6 +10,7 @@ using System.Data.Entity;
 
 namespace Vidly.Controllers.Api
 {
+    [System.Web.Mvc.Authorize(Roles = RoleName.CanManageMovies)]
     public class MovieController : ApiController
     {
         private ApplicationDbContext _context;

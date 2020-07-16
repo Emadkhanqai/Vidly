@@ -75,11 +75,13 @@ namespace Vidly.Controllers
             _context.Dispose();
         }
 
+        [Authorize]
         public ViewResult Index()
         {
             return View(User.IsInRole(RoleName.CanManageMovies) ? "List" : "ReadOnlyList");
         }
 
+        [Authorize]
         public ActionResult Details(int id)
         {
             var movie = _context.Movies.Include(c => c.Genre).SingleOrDefault(c => c.Id == id);
