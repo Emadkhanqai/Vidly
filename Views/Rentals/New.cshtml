@@ -4,7 +4,7 @@
 
 <h2>New</h2>
 
-<form>
+<form id="newRental">
     <div class="form-group">
         <label>Customer</label>
         <div class="tt-container">
@@ -30,10 +30,10 @@
 
 @section scripts {
     <script>
-        $(document).ready(function () {
+        $(document).ready(function() {
 
             var vm = {
-                movieIds : []
+                movieIds: []
             };
 
             var customers = new Bloodhound({
@@ -46,16 +46,16 @@
             });
 
             $('#customer').typeahead({
-                minLength: 3,
-                highlight: true
-            },
-                {
-                    name: 'customers',
-                    display: 'name',
-                    source: customers
-                })
+                        minLength: 3,
+                        highlight: true
+                    },
+                    {
+                        name: 'customers',
+                        display: 'name',
+                        source: customers
+                    })
                 .on("typeahead:select",
-                    function (e, customer) {
+                    function(e, customer) {
                         vm.customerId = customer.id;
                     });
 
@@ -69,22 +69,37 @@
             });
 
             $('#movie').typeahead({
-                minLength: 3,
-                highlight: true
-            },
-                {
-                    name: 'movies',
-                    display: 'name',
-                    source: movies
-                })
+                        minLength: 3,
+                        highlight: true
+                    },
+                    {
+                        name: 'movies',
+                        display: 'name',
+                        source: movies
+                    })
                 .on("typeahead:select",
-                    function (e, movie) {
+                    function(e, movie) {
                         $('#movies').append('<li class="list-group-item">' + movie.name + "</li>");
 
                         $('#movie').typeahead("val", "");
 
                         vm.movieIds.push(movie.id);
                     });
+
+            $('#newRental').submit(function(e) {
+                e.preventDefault();
+
+                $.ajax({
+                    url: '/api/newRentals',
+                    method: "post",
+                    data: vm
+                }).done(function() {
+                    alert('done');
+                }).fail(function() {
+
+                });
+
+            });
         })
     </script>
 }
