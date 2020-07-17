@@ -80,9 +80,7 @@
                 .on("typeahead:select",
                     function(e, movie) {
                         $('#movies').append('<li class="list-group-item">' + movie.name + "</li>");
-
                         $('#movie').typeahead("val", "");
-
                         vm.movieIds.push(movie.id);
                     });
 
@@ -94,9 +92,9 @@
                     method: "post",
                     data: vm
                 }).done(function() {
-                    alert('done');
+                    toastr.success('Rentals successfully recorded');
                 }).fail(function() {
-
+                    toastr.error('Something unexpected happened');
                 });
 
             });
